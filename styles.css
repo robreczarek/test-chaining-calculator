@@ -1,0 +1,19 @@
+.row {
+    clear: both;
+}
+.btn, .col {
+    float: left;
+}
+
+button {
+    width: 25px;
+    height: 25px;
+}
+
+#ui-num0 {
+    width: 75px;
+}
+
+#ui-opEquals {
+    height: 75px;
+}
