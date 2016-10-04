@@ -3,13 +3,15 @@
     'use strict';
 
     function bootstrap() {
-        var debug = true;
-        var calc = new Calculator(0, debug);
+
+        var calc = new Calculator(0);
+        calc.debug = true;
         var ui = new UI();
         ui.setup(calc);
 
-        //not working
-        //console.log(calc.add(5).mutiply(2).value());
+        console.log( Calculator(3).add(5).multiply(2).value() );
+        console.log( Calculator(4).add(2).multiply(2).value() );
+
     }
 
     window.addEventListener('load', bootstrap);

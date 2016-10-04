@@ -1,81 +1,71 @@
 // Calculator
 
-function Calculator(val, debug) {
+function Calculator(val) {
 
-    this.debug = debug;
+    this.debug = false;
     this.numbers = [];
     this.operator = '';
+
     if (val) {
-        this.total = Number(val);
+        val = Number(val);
     } else {
-        this.total = 0;
+        val = Number(0);
+    }
+    this.total = Number(val);
+
+    if (this instanceof Calculator) {
+        return this.Calculator;
+    } else {
+        return new Calculator(val);
     }
 
 }
 
 Calculator.prototype.add = function (val) {
 
-    var out = 0;
-
-    if ( this.operator ) {
-        out = this.actCalc( val, this.operator );
-    }
-
     this.operator = '+';
+    this.actCalc( val, this.operator );
 
     this.printDebug();
-    return out;
+    return this;
 
 };
 
 Calculator.prototype.subtract = function (val) {
 
-    var out = 0;
-
-    if ( this.operator ) {
-        out = this.actCalc( val, this.operator );
-    }
-
     this.operator = '-';
+    this.actCalc( val, this.operator );
 
     this.printDebug();
-    return out;
+    return this;
 
 };
 
 Calculator.prototype.divide = function (val) {
 
-    var out = 0;
-
-    if ( this.operator ) {
-        out = this.actCalc( val, this.operator );
-    }
-
     this.operator = '/';
+    this.actCalc( val, this.operator );
 
     this.printDebug();
-    return out;
+    return this;
 
 };
 
 Calculator.prototype.multiply = function (val) {
 
-    var out = 0;
-
-    if ( this.operator ) {
-        out = this.actCalc( val, this.operator );
-    }
-
     this.operator = '*';
+    this.actCalc( val, this.operator );
 
     this.printDebug();
-    return out;
+    return this;
 
 };
 
 Calculator.prototype.actCalc = function (val, op) {
 
     if ( this.operator ) {
+
+
 
         switch(op) {
             case '+':
@@ -94,7 +84,7 @@ Calculator.prototype.actCalc = function (val, op) {
         }
     }
 
-    return this.total;
+    return this;
 
 };
 
@@ -118,16 +108,16 @@ Calculator.prototype.clearNumbers = function () {
 
 Calculator.prototype.getNumbers = function () {
 
-    return this.numbers.join('');
+    return Number( this.numbers.join('') );
 
 };
 
 Calculator.prototype.pushNumber = function (val) {
 
-    this.numbers.push(val);
+    this.numbers.push( Number( val ) );
 
     if (this.total === 0) {
-        this.total = Number( this.getNumbers() );
+        this.total = this.getNumbers();
     }
 
 };

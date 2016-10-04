@@ -91,26 +91,46 @@ UI.prototype.setup = function (calc) {
     //UI operator click handlers
 
     $opPlus.addEventListener( 'click', function () {
-        var num = calc.add( calc.getNumbers() );
-        self.updateUINumbers( $display, num );
+
+        if ( calc.operator !== '' ) {
+            calc.actCalc( calc.getNumbers(), calc.operator );
+        }
+        calc.operator = '+';
+
+        self.updateUINumbers( $display, calc.value() );
         calc.clearNumbers();
     });
 
     $opMinus.addEventListener( 'click', function () {
-        var num = calc.subtract( calc.getNumbers() );
-        self.updateUINumbers( $display, num );
+
+        if ( calc.operator !== '' ) {
+            calc.actCalc( calc.getNumbers(), calc.operator );
+        }
+        calc.operator = '-';
+
+        self.updateUINumbers( $display, calc.value() );
         calc.clearNumbers();
     });
 
     $opDivide.addEventListener( 'click', function () {
-        var num = calc.divide( calc.getNumbers() );
-        self.updateUINumbers( $display, num );
+
+        if ( calc.operator !== '' ) {
+            calc.actCalc( calc.getNumbers(), calc.operator );
+        }
+        calc.operator = '/';
+
+        self.updateUINumbers( $display, calc.value() );
         calc.clearNumbers();
     });
 
     $opMultiply.addEventListener( 'click', function () {
-        var num = calc.multiply( calc.getNumbers() );
-        self.updateUINumbers( $display, num );
+
+        if ( calc.operator !== '' ) {
+            calc.actCalc( calc.getNumbers(), calc.operator );
+        }
+        calc.operator = '*';
+
+        self.updateUINumbers( $display, calc.value() );
         calc.clearNumbers();
     });
 
@@ -120,10 +140,10 @@ UI.prototype.setup = function (calc) {
     });
 
     $opEquals.addEventListener( 'click', function () {
-        var num = calc.actCalc( calc.getNumbers(), calc.operator );
-        self.updateUINumbers( $display, num );
+        calc.actCalc( calc.getNumbers(), calc.operator );
+        self.updateUINumbers( $display, calc.value() );
         calc.clearNumbers()
-        calc.pushNumber(num);
+        calc.pushNumber( calc.value() );
         calc.operator = '';
         calc.printDebug();
     });
