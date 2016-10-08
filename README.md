@@ -2,7 +2,7 @@
 
 > This is an exercise to build a functioning calculator with a web based user interface.
 
-> ## How to run?
+## How to run?
 
 In order to test the code and preview output, open app/index.html
 

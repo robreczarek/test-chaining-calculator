@@ -1,26 +1,26 @@
 {
-  "name": "test-chaining-calculator",
-  "version": "1.0.0",
-  "description": "This is an exercise to build a functioning calculator with a web based user interface.",
-  "main": "index.html",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "jasmine": "^2.5.2"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/robreczarek/test-chaining-calculator.git"
-  },
-  "author": "Robert Obreczarek",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/robreczarek/test-chaining-calculator/issues"
-  },
-  "homepage": "https://github.com/robreczarek/test-chaining-calculator#readme"
+    "name": "test-chaining-calculator",
+    "version": "1.0.0",
+    "description": "This is an exercise to build a functioning calculator with a web based user interface.",
+    "main": "index.html",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+        "jasmine": "^2.5.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/robreczarek/test-chaining-calculator.git"
+    },
+    "author": "Robert Obreczarek",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/robreczarek/test-chaining-calculator/issues"
+    },
+    "homepage": "https://github.com/robreczarek/test-chaining-calculator#readme"
 }

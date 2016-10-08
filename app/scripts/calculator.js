@@ -1,3 +1,4 @@
+'use strict';
 // Calculator
 
 function Calculator(val) {
