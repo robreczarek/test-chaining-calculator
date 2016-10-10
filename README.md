@@ -8,14 +8,19 @@ In order to preview output, open app/index.html
 
 ## How to test?
 
-In order to test the code, open test/SpecRunner.html
+In order to test the code via the web browser, open test/SpecRunner.html
+
+To test via the command line, run the following:
+```bash
+npm test
+```
 
 ## TODO
 
 * [ ] Resolve issue with test suite
-* [ ] Implement Karma runner into project
 
 ## DONE
+* [x] Implement Karma runner into project
 * [x] Add Jasmine test suite
 * [x] Reformat files to conform to spacing standard
 * [x] Move script link references within index.html inside the body tag
