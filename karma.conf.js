@@ -15,13 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*spec.js',
-      '"test/**/*Spec.js"',
-      'test/**/*Spec.js',
-      'test/**/*spec.js',
-      '"test/**/*spec.js"',
-      '"test/**/*spec.js"',
-      '"test/**/*spec.js"'
+      'test/**/test.*.js',
+      '"test/**/test.*.js"'
     ],
 
 
@@ -61,12 +56,13 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera'],
+    // 'Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera'
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
