@@ -4,13 +4,19 @@
 
 ## How to run?
 
-In order to test the code and preview output, open app/index.html
+In order to preview output, open app/index.html
+
+## How to test?
+
+In order to test the code, open test/SpecRunner.html
 
 ## TODO
 
-* [ ] Add Jasmine test suite
+* [ ] Resolve issue with test suite
+* [ ] Implement Karma runner into project
 
 ## DONE
+* [x] Add Jasmine test suite
 * [x] Reformat files to conform to spacing standard
 * [x] Move script link references within index.html inside the body tag
 * [x] Rename index.js to setup.js
