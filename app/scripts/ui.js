@@ -1,5 +1,6 @@
+'use strict';
+
 (function (root) {
-    'use strict';
 
     function UI() {
         this.display = 0;
@@ -143,7 +144,7 @@
         $opEquals.addEventListener('click', function () {
             calc.actCalc(calc.getNumbers(), calc.operator);
             self.updateUINumbers($display, calc.value());
-            calc.clearNumbers()
+            calc.clearNumbers();
             calc.pushNumber(calc.value());
             calc.operator = '';
             calc.printDebug();

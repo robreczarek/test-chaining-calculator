@@ -15,11 +15,17 @@ To test via the command line, run the following:
 npm test
 ```
 
+To check the code (lint) for consistency with coding standards, run this command:
+```bash
+npm run lint
+```
+
 ## TODO
 
 * [ ] Resolve issue with test suite
 
 ## DONE
+* [x] Added ESLint step to npm run lint
 * [x] Implement Karma runner into project
 * [x] Add Jasmine test suite
 * [x] Reformat files to conform to spacing standard

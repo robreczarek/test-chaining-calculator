@@ -1,6 +1,6 @@
-(function () {
-    'use strict';
+'use strict';
 
+(function () {
 
     function Calculator(val) {
         this.debug = false;
@@ -56,21 +56,21 @@
     Calculator.prototype.actCalc = function (val, op) {
         if (this.operator) {
             switch (op) {
-                case '+':
-                    this.total += Number(val);
-                    break;
+            case '+':
+                this.total += Number(val);
+                break;
 
-                case '-':
-                    this.total -= Number(val);
-                    break;
+            case '-':
+                this.total -= Number(val);
+                break;
 
-                case '/':
-                    this.total /= Number(val);
-                    break;
+            case '/':
+                this.total /= Number(val);
+                break;
 
-                case '*':
-                    this.total *= Number(val);
-                    break;
+            case '*':
+                this.total *= Number(val);
+                break;
             }
         }
 

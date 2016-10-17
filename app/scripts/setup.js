@@ -1,5 +1,6 @@
+'use strict';
+
 (function (root) {
-    'use strict';
 
     function bootstrap() {
         var calc = new Calculator(0);
