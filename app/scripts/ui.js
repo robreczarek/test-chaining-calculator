@@ -1,6 +1,5 @@
-'use strict';
-
 (function (root) {
+    'use strict';
 
     function UI() {
         this.display = 0;

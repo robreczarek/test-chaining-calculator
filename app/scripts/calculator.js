@@ -1,24 +1,22 @@
-'use strict';
+(function (root) {
+    'use strict';
 
-(function () {
-
+    /**
+     * @param {number} [val=0]
+     * @constructor
+     */
     function Calculator(val) {
+        if (!(this instanceof Calculator)) {
+            throw new Error('bad invocation');
+        }
+
         this.debug = false;
         this.numbers = [];
         this.operator = '';
 
-        if (val) {
-            val = Number(val);
-        } else {
-            val = Number(0);
-        }
-        this.total = Number(val);
+        val = Number(val) || 0;
 
-        if (this instanceof Calculator) {
-            return this.Calculator;
-        } else {
-            return new Calculator(val);
-        }
+        this.total = Number(val);
     }
 
     Calculator.prototype.add = function (val) {
@@ -56,21 +54,21 @@
     Calculator.prototype.actCalc = function (val, op) {
         if (this.operator) {
             switch (op) {
-            case '+':
-                this.total += Number(val);
-                break;
+                case '+':
+                    this.total += Number(val);
+                    break;
 
-            case '-':
-                this.total -= Number(val);
-                break;
+                case '-':
+                    this.total -= Number(val);
+                    break;
 
-            case '/':
-                this.total /= Number(val);
-                break;
+                case '/':
+                    this.total /= Number(val);
+                    break;
 
-            case '*':
-                this.total *= Number(val);
-                break;
+                case '*':
+                    this.total *= Number(val);
+                    break;
             }
         }
 
@@ -117,4 +115,4 @@
     };
 
     root.Calculator = Calculator;
-}(this));
+}(this || module.exports));
