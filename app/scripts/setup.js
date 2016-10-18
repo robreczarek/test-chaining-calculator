@@ -1,14 +1,12 @@
-'use strict';
-
 (function (root) {
+    'use strict';
 
     function bootstrap() {
-        var calc = new Calculator(0);
+        var calc = new root.Calculator(0);
         calc.debug = false;
 
-        var ui = new UI();
+        var ui = new root.UI();
         ui.setup(calc);
-
     }
 
     root.addEventListener('load', bootstrap);
