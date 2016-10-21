@@ -7,7 +7,8 @@
      */
     function Calculator(val) {
         if (!(this instanceof Calculator)) {
-            throw new Error('bad invocation');
+            //Make sure to instantiate object if the 'new' operator is not used
+            return new Calculator(val);
         }
 
         this.debug = false;
@@ -115,4 +116,5 @@
     };
 
     root.Calculator = Calculator;
+
 }(this || module.exports));
