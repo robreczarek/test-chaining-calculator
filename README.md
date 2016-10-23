@@ -21,11 +21,10 @@ npm run lint
 ```
 
 ## TODO
-
+* [ ] Get Calculator object to work without 'new' operator aka "super linijka"
 
 ## DONE
 * [x] Fix UI calculation workflow
-* [x] Get Calculator object to work without 'new' operator aka "super linijka"
 * [x] Resolve issue with test suite
 * [x] Added ESLint step to npm run lint
 * [x] Implement Karma runner into project

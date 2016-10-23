@@ -6,9 +6,9 @@
      * @constructor
      */
     function Calculator(val) {
+
         if (!(this instanceof Calculator)) {
-            //Make sure to instantiate object if the 'new' operator is not used
-            return new Calculator(val);
+            throw new Error('bad invocation');
         }
 
         this.debug = false;
@@ -18,6 +18,7 @@
         val = Number(val) || 0;
 
         this.total = Number(val);
+
     }
 
     Calculator.prototype.add = function (val) {
@@ -116,5 +117,7 @@
     };
 
     root.Calculator = Calculator;
+
+    return Calculator;
 
 }(this || module.exports));
