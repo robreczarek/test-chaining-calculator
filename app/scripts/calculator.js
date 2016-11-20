@@ -5,7 +5,7 @@
      * @param {number} [val=0]
      * @constructor
      */
-    function Calculator(val) {
+    function Calculator(initialValue) {
 
         if (!(this instanceof Calculator)) {
             throw new Error('bad invocation');
@@ -14,7 +14,15 @@
         this.debug = false;
         this.numbers = [];
         this.operator = '';
-        this.total = Number(val) || 0;
+        this.total = Number(initialValue) || 0;
+
+        var initValue = initialValue;
+
+        return {
+            value: function () {
+                return initValue;
+            }
+        };
 
     }
 

@@ -3,7 +3,7 @@
 
     function bootstrap() {
 
-        var calc = new root.Calculator(0);
+        var calc = root.Calculator(0);
         //set to true if you wish to follow values in the console
         calc.debug = false;
 
