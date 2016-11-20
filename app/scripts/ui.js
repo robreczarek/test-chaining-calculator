@@ -152,4 +152,4 @@
 
     root.UI = UI;
 
-}(this));
+}(this || module.exports));

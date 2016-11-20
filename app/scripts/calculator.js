@@ -14,10 +14,7 @@
         this.debug = false;
         this.numbers = [];
         this.operator = '';
-
-        val = Number(val) || 0;
-
-        this.total = Number(val);
+        this.total = Number(val) || 0;
 
     }
 
@@ -117,7 +114,5 @@
     };
 
     root.Calculator = Calculator;
-
-    return Calculator;
 
 }(this || module.exports));
