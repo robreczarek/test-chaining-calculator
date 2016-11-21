@@ -7,16 +7,11 @@
      */
     function Calculator(initialValue) {
 
-        if (!(this instanceof Calculator)) {
+        if (this instanceof Calculator) {
             throw new Error('bad invocation');
         }
 
-        this.debug = false;
-        this.numbers = [];
-        this.operator = '';
-        this.total = Number(initialValue) || 0;
-
-        var initValue = initialValue;
+        var initValue = Number(initialValue) || 0;
 
         return {
             value: function () {
@@ -25,6 +20,14 @@
         };
 
     }
+
+    Calculator.prototype.debug = false;
+
+    Calculator.prototype.numbers = [];
+
+    Calculator.prototype.operator = '';
+
+    Calculator.prototype.total = 0; //Calculator.value;
 
     Calculator.prototype.add = function (val) {
         this.operator = '+';
