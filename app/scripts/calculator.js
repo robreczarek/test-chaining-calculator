@@ -1,4 +1,4 @@
-(function (root) {
+var Calc = (function (root) {
     'use strict';
 
     /**
@@ -12,117 +12,113 @@
         }
 
         var initValue = Number(initialValue) || 0;
+        var debug = false;
+        var numbers = [];
+        var operator = '';
+        var total = initValue;
 
-        return {
-            value: function () {
-                return initValue;
+        var value = function () {
+            return total;
+        };
+
+        var add = function (val) {
+            operator = '+';
+            actCalc(val, operator);
+            printDebug();
+        };
+
+        var subtract = function (val) {
+            operator = '-';
+            actCalc(val, operator);
+
+            printDebug();
+        };
+
+        var divide = function (val) {
+            operator = '/';
+            actCalc(val, operator);
+
+            printDebug();
+        };
+
+        var multiply = function (val) {
+            operator = '*';
+            actCalc(val, operator);
+
+            printDebug();
+        };
+
+        var actCalc = function (val, op) {
+            if (operator) {
+                switch (op) {
+                    case '+':
+                        total += Number(val);
+                        break;
+
+                    case '-':
+                        total -= Number(val);
+                        break;
+
+                    case '/':
+                        total /= Number(val);
+                        break;
+
+                    case '*':
+                        total *= Number(val);
+                        break;
+                }
             }
         };
 
-    }
-
-    Calculator.prototype.debug = false;
-
-    Calculator.prototype.numbers = [];
-
-    Calculator.prototype.operator = '';
-
-    Calculator.prototype.total = 0; //Calculator.value;
-
-    Calculator.prototype.add = function (val) {
-        this.operator = '+';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.subtract = function (val) {
-        this.operator = '-';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.divide = function (val) {
-        this.operator = '/';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.multiply = function (val) {
-        this.operator = '*';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.actCalc = function (val, op) {
-        if (this.operator) {
-            switch (op) {
-                case '+':
-                    this.total += Number(val);
-                    break;
-
-                case '-':
-                    this.total -= Number(val);
-                    break;
-
-                case '/':
-                    this.total /= Number(val);
-                    break;
-
-                case '*':
-                    this.total *= Number(val);
-                    break;
+        var clearCalc = function () {
+            if (numbers.length < 1) {
+                total = Number(0);
             }
+
+            clearNumbers();
+            operator = '';
+            printDebug();
+        };
+
+        var clearNumbers = function () {
+            numbers = [];
+        };
+
+        var getNumbers = function () {
+            return Number(numbers.join(''));
+        };
+
+        var pushNumber = function (val) {
+            numbers.push(Number(val));
+
+            if (total === 0) {
+                total = getNumbers();
+            }
+        };
+
+        var printDebug = function () {
+            if (debug) {
+                console.log('---------------------------');
+                console.log('numbers: ' + numbers);
+                console.log('operator: ' + operator);
+                console.log('total: ' + total);
+            }
+        };
+
+        return {
+            value: value,
+            add: add,
+            subtract: subtract,
+            divide: divide,
+            multiply: multiply,
+            actCalc: actCalc,
+            clearCalc: clearCalc,
+            clearNumbers: clearNumbers,
+            getNumbers: getNumbers,
+            pushNumber: pushNumber,
+            printDebug: printDebug
         }
-
-        return this;
-    };
-
-    Calculator.prototype.clearCalc = function () {
-        if (this.numbers.length < 1) {
-            this.total = Number(0);
-        }
-
-        this.clearNumbers();
-        this.operator = '';
-        this.printDebug();
-    };
-
-    Calculator.prototype.clearNumbers = function () {
-        this.numbers = [];
-    };
-
-    Calculator.prototype.getNumbers = function () {
-        return Number(this.numbers.join(''));
-    };
-
-    Calculator.prototype.pushNumber = function (val) {
-        this.numbers.push(Number(val));
-
-        if (this.total === 0) {
-            this.total = this.getNumbers();
-        }
-    };
-
-    Calculator.prototype.value = function () {
-        return this.total;
-    };
-
-    Calculator.prototype.printDebug = function () {
-        if (this.debug) {
-            console.log('---------------------------');
-            console.log('numbers: ' + this.numbers);
-            console.log('operator: ' + this.operator);
-            console.log('total: ' + this.total);
-        }
-    };
+    }
 
     root.Calculator = Calculator;
 
