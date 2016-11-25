@@ -1,4 +1,4 @@
-var Calc = (function (root) {
+(function (root) {
     'use strict';
 
     /**
@@ -25,6 +25,8 @@ var Calc = (function (root) {
             operator = '+';
             actCalc(val, operator);
             printDebug();
+
+            return this;
         };
 
         var subtract = function (val) {
@@ -32,6 +34,8 @@ var Calc = (function (root) {
             actCalc(val, operator);
 
             printDebug();
+
+            return this;
         };
 
         var divide = function (val) {
@@ -39,6 +43,8 @@ var Calc = (function (root) {
             actCalc(val, operator);
 
             printDebug();
+
+            return this;
         };
 
         var multiply = function (val) {
@@ -46,6 +52,8 @@ var Calc = (function (root) {
             actCalc(val, operator);
 
             printDebug();
+
+            return this;
         };
 
         var actCalc = function (val, op) {

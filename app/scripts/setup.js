@@ -4,7 +4,6 @@
     function bootstrap() {
 
         var calc = root.Calculator(0);
-        console.log(calc);
         //set to true if you wish to follow values in the console
         calc.debug = true;
 
