@@ -5,119 +5,140 @@
      * @param {number} [val=0]
      * @constructor
      */
-    function Calculator(val) {
+    function Calculator(initialValue) {
 
-        if (!(this instanceof Calculator)) {
+        if (this instanceof Calculator) {
             throw new Error('bad invocation');
         }
 
-        this.debug = false;
-        this.numbers = [];
-        this.operator = '';
+        var initValue = Number(initialValue) || 0;
+        var debug = true;
+        var numbers = [];
+        var operator = '';
+        var total = initValue;
 
-        val = Number(val) || 0;
+        var value = function () {
+            return total;
+        };
 
-        this.total = Number(val);
+        var add = function (val) {
+            operator = '+';
+            actCalculate(val);
+            printDebug();
 
+            return this;
+        };
+
+        var subtract = function (val) {
+            operator = '-';
+            actCalculate(val);
+
+            printDebug();
+
+            return this;
+        };
+
+        var divide = function (val) {
+            operator = '/';
+            actCalculate(val);
+
+            printDebug();
+
+            return this;
+        };
+
+        var multiply = function (val) {
+            operator = '*';
+            actCalculate(val);
+
+            printDebug();
+
+            return this;
+        };
+
+        var setOperator = function(op) {
+            operator = op;
+        };
+
+        var actCalculate = function (val) {
+            console.log(numbers);
+            if (operator) {
+                switch (operator) {
+                    case '+':
+                        total += Number(val);
+                        break;
+
+                    case '-':
+                        total -= Number(val);
+                        break;
+
+                    case '/':
+                        total /= Number(val);
+                        break;
+
+                    case '*':
+                        total *= Number(val);
+                        break;
+                }
+            }
+        };
+
+        var clearCalc = function () {
+            if (!numbers.length) {
+                total = Number(0);
+            }
+
+            clearNumbers();
+            operator = '';
+            printDebug();
+        };
+
+        var clearNumbers = function () {
+            numbers = [];
+        };
+
+        var getNumbers = function () {
+            return Number(numbers.join(''));
+        };
+
+        var pushNumber = function (val) {
+            numbers.push(Number(val));
+
+            if (total === 0) {
+                total = getNumbers();
+            }
+        };
+
+        var printDebug = function () {
+            //console.log(debug);
+
+            if (debug) {
+                console.log('---------------------------');
+                console.log('numbers: ' + numbers);
+                console.log('operator: ' + operator);
+                console.log('total: ' + total);
+            }
+
+            return this;
+        };
+
+        return {
+            value: value,
+            numbers: numbers,
+            add: add,
+            subtract: subtract,
+            divide: divide,
+            multiply: multiply,
+            actCalculate: actCalculate,
+            clearCalc: clearCalc,
+            clearNumbers: clearNumbers,
+            getNumbers: getNumbers,
+            pushNumber: pushNumber,
+            printDebug: printDebug,
+            setOperator: setOperator
+        }
     }
 
-    Calculator.prototype.add = function (val) {
-        this.operator = '+';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.subtract = function (val) {
-        this.operator = '-';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.divide = function (val) {
-        this.operator = '/';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.multiply = function (val) {
-        this.operator = '*';
-        this.actCalc(val, this.operator);
-
-        this.printDebug();
-        return this;
-    };
-
-    Calculator.prototype.actCalc = function (val, op) {
-        if (this.operator) {
-            switch (op) {
-                case '+':
-                    this.total += Number(val);
-                    break;
-
-                case '-':
-                    this.total -= Number(val);
-                    break;
-
-                case '/':
-                    this.total /= Number(val);
-                    break;
-
-                case '*':
-                    this.total *= Number(val);
-                    break;
-            }
-        }
-
-        return this;
-    };
-
-    Calculator.prototype.clearCalc = function () {
-        if (this.numbers.length < 1) {
-            this.total = Number(0);
-        }
-
-        this.clearNumbers();
-        this.operator = '';
-        this.printDebug();
-    };
-
-    Calculator.prototype.clearNumbers = function () {
-        this.numbers = [];
-    };
-
-    Calculator.prototype.getNumbers = function () {
-        return Number(this.numbers.join(''));
-    };
-
-    Calculator.prototype.pushNumber = function (val) {
-        this.numbers.push(Number(val));
-
-        if (this.total === 0) {
-            this.total = this.getNumbers();
-        }
-    };
-
-    Calculator.prototype.value = function () {
-        return this.total;
-    };
-
-    Calculator.prototype.printDebug = function () {
-        if (this.debug) {
-            console.log('---------------------------');
-            console.log('numbers: ' + this.numbers);
-            console.log('operator: ' + this.operator);
-            console.log('total: ' + this.total);
-        }
-    };
-
     root.Calculator = Calculator;
-
-    return Calculator;
 
 }(this || module.exports));

@@ -93,10 +93,8 @@
 
         $opPlus.addEventListener('click', function () {
 
-            if (calc.operator !== '') {
-                calc.actCalc(calc.getNumbers(), calc.operator);
-            }
-            calc.operator = '+';
+            calc.actCalculate(calc.getNumbers());
+            calc.setOperator('+');
 
             self.updateUINumbers($display, calc.value());
             calc.clearNumbers();
@@ -104,10 +102,8 @@
 
         $opMinus.addEventListener('click', function () {
 
-            if (calc.operator !== '') {
-                calc.actCalc(calc.getNumbers(), calc.operator);
-            }
-            calc.operator = '-';
+            calc.actCalculate(calc.getNumbers());
+            calc.setOperator('-');
 
             self.updateUINumbers($display, calc.value());
             calc.clearNumbers();
@@ -115,10 +111,8 @@
 
         $opDivide.addEventListener('click', function () {
 
-            if (calc.operator !== '') {
-                calc.actCalc(calc.getNumbers(), calc.operator);
-            }
-            calc.operator = '/';
+            calc.actCalculate(calc.getNumbers());
+            calc.setOperator('/');
 
             self.updateUINumbers($display, calc.value());
             calc.clearNumbers();
@@ -126,10 +120,8 @@
 
         $opMultiply.addEventListener('click', function () {
 
-            if (calc.operator !== '') {
-                calc.actCalc(calc.getNumbers(), calc.operator);
-            }
-            calc.operator = '*';
+            calc.actCalculate(calc.getNumbers());
+            calc.setOperator('*');
 
             self.updateUINumbers($display, calc.value());
             calc.clearNumbers();
@@ -141,15 +133,14 @@
         });
 
         $opEquals.addEventListener('click', function () {
-            calc.actCalc(calc.getNumbers(), calc.operator);
+            calc.actCalculate(calc.getNumbers());
             self.updateUINumbers($display, calc.value());
             calc.clearNumbers();
             calc.pushNumber(calc.value());
-            calc.operator = '';
-            calc.printDebug();
+            calc.setOperator('');
         });
     };
 
     root.UI = UI;
 
-}(this));
+}(this || module.exports));
