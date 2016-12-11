@@ -12,7 +12,7 @@
         }
 
         var initValue = Number(initialValue) || 0;
-        var debug = false;
+        var debug = true;
         var numbers = [];
         var operator = '';
         var total = initValue;
@@ -23,7 +23,7 @@
 
         var add = function (val) {
             operator = '+';
-            actCalc(val, operator);
+            actCalculate(val);
             printDebug();
 
             return this;
@@ -31,7 +31,7 @@
 
         var subtract = function (val) {
             operator = '-';
-            actCalc(val, operator);
+            actCalculate(val);
 
             printDebug();
 
@@ -40,7 +40,7 @@
 
         var divide = function (val) {
             operator = '/';
-            actCalc(val, operator);
+            actCalculate(val);
 
             printDebug();
 
@@ -49,16 +49,21 @@
 
         var multiply = function (val) {
             operator = '*';
-            actCalc(val, operator);
+            actCalculate(val);
 
             printDebug();
 
             return this;
         };
 
-        var actCalc = function (val, op) {
+        var setOperator = function(op) {
+            operator = op;
+        };
+
+        var actCalculate = function (val) {
+            console.log(numbers);
             if (operator) {
-                switch (op) {
+                switch (operator) {
                     case '+':
                         total += Number(val);
                         break;
@@ -79,7 +84,7 @@
         };
 
         var clearCalc = function () {
-            if (numbers.length < 1) {
+            if (!numbers.length) {
                 total = Number(0);
             }
 
@@ -105,26 +110,32 @@
         };
 
         var printDebug = function () {
+            //console.log(debug);
+
             if (debug) {
                 console.log('---------------------------');
                 console.log('numbers: ' + numbers);
                 console.log('operator: ' + operator);
                 console.log('total: ' + total);
             }
+
+            return this;
         };
 
         return {
             value: value,
+            numbers: numbers,
             add: add,
             subtract: subtract,
             divide: divide,
             multiply: multiply,
-            actCalc: actCalc,
+            actCalculate: actCalculate,
             clearCalc: clearCalc,
             clearNumbers: clearNumbers,
             getNumbers: getNumbers,
             pushNumber: pushNumber,
-            printDebug: printDebug
+            printDebug: printDebug,
+            setOperator: setOperator
         }
     }
 
