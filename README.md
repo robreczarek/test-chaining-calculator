@@ -6,6 +6,10 @@
 
 In order to preview output, open app/index.html
 
+## Demo
+A working version of the app can be viewed here:
+https://robreczarek.github.io/test-chaining-calculator/app/
+
 ## How to test?
 
 In order to test the code via the web browser, open test/SpecRunner.html
@@ -21,9 +25,10 @@ npm run lint
 ```
 
 ## TODO
-* [ ] Get Calculator object to work without 'new' operator aka "super linijka"
+
 
 ## DONE
+* [x] Get Calculator object to work without 'new' operator aka "super linijka"
 * [x] Fix UI calculation workflow
 * [x] Resolve issue with test suite
 * [x] Added ESLint step to npm run lint
